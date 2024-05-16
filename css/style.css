@@ -12,7 +12,8 @@ body {
 	height: calc(100vh - 4rem);
 	margin-top: 2rem;
 }
-.box-left {
+.right-bottom-main {
+	background-image: url(/img/mine.jpg);
 }
 
 .box-left-top,
@@ -43,7 +44,7 @@ body {
 }
 
 .search-box {
-	background-color: #fafafa;
+	background-color: white;
 	height: 4rem;
 }
 
@@ -59,4 +60,15 @@ ul {
 .right-bottom-footer {
 	background-color: #f3eeea;
 	height: 5rem;
+}
+
+.my-message-box {
+	background-color: #d5f9ba;
+}
+.user-message-box {
+	background-color: white;
+}
+
+.hours {
+	font-size: 0.8rem;
 }
