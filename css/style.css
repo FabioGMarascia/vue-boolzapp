@@ -33,6 +33,7 @@ body {
 .notification-box {
 	background-color: #8edafc;
 }
+
 .fa-bell-slash {
 	color: #8edafc;
 }
@@ -47,4 +48,14 @@ body {
 
 ul {
 	height: calc(100vh - 18.9rem);
+}
+
+.right-bottom-main {
+	background-color: #e5ddd5;
+	height: calc(100vh - 14.5rem);
+}
+
+.right-bottom-footer {
+	background-color: #f3eeea;
+	height: 5rem;
 }
