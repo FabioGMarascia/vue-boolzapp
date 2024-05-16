@@ -104,28 +104,10 @@
 											:class="recivedSent(chat)">
 											{{chat.message}}
 											<span class="hours position-absolute bottom-0 end-0 pe-2">
-												12:30
+												{{chat.date[1]}}
 											</span>
 										</div>
 									</div>
-									<!-- 
-									<div class="row justify-content-end my-3">
-										<div class="col-5 my-message-box rounded p-3 position-relative">
-											Come stai?
-											<span class="hours position-absolute bottom-0 end-0 pe-2"
-												>12:30</span
-											>
-										</div>
-									</div>
-
-									<div class="row my-3">
-										<div class="col-5 user-message-box rounded p-3 position-relative">
-											Tutto bene grazie
-											<span class="hours position-absolute bottom-0 end-0 pe-2"
-												>12:31</span
-											>
-										</div>
-									</div> -->
 								</div>
 							</div>
 
@@ -138,7 +120,9 @@
 									<input
 										type="text"
 										class="w-100 rounded h-100 px-2"
-										placeholder="Write a message" />
+										placeholder="Write a message"
+										v-model="inputMessage"
+										@keyup.enter="addMessage()" />
 								</div>
 
 								<div class="col-1">
