@@ -26,7 +26,7 @@
 						<div class="box-left-top row mx-0">
 							<div class="col-6 my-auto">
 								<img src="./img/avatar_i.png" class="user-img rounded-circle" />
-								<span class="">Fabio</span>
+								<span>Fabio</span>
 							</div>
 
 							<div class="col-6 my-auto text-end">
@@ -64,51 +64,9 @@
 							</div>
 
 							<ul class="list-group overflow-auto rounded-0">
-								<li class="list-group-item py-3">
-									<img src="./img/avatar_1.png" class="user-img rounded-circle" />
-									<span class="">Fabio</span>
-									<span class="position-absolute end-0 me-3">12:00</span>
-								</li>
-
-								<li class="list-group-item py-3">
-									<img src="./img/avatar_2.png" class="user-img rounded-circle" />
-									<span class="">Fabio</span>
-									<span class="position-absolute end-0 me-3">12:00</span>
-								</li>
-
-								<li class="list-group-item py-3">
-									<img src="./img/avatar_3.png" class="user-img rounded-circle" />
-									<span class="">Fabio</span>
-									<span class="position-absolute end-0 me-3">12:00</span>
-								</li>
-
-								<li class="list-group-item py-3">
-									<img src="./img/avatar_4.png" class="user-img rounded-circle" />
-									<span class="">Fabio</span>
-									<span class="position-absolute end-0 me-3">12:00</span>
-								</li>
-
-								<li class="list-group-item py-3">
-									<img src="./img/avatar_5.png" class="user-img rounded-circle" />
-									<span class="">Fabio</span>
-									<span class="position-absolute end-0 me-3">12:00</span>
-								</li>
-
-								<li class="list-group-item py-3">
-									<img src="./img/avatar_6.png" class="user-img rounded-circle" />
-									<span class="">Fabio</span>
-									<span class="position-absolute end-0 me-3">12:00</span>
-								</li>
-
-								<li class="list-group-item py-3">
-									<img src="./img/avatar_7.png" class="user-img rounded-circle" />
-									<span class="">Fabio</span>
-									<span class="position-absolute end-0 me-3">12:00</span>
-								</li>
-
-								<li class="list-group-item py-3">
-									<img src="./img/avatar_8.png" class="user-img rounded-circle" />
-									<span class="">Fabio</span>
+								<li class="list-group-item py-3" v-for="contact in contacts">
+									<img :src="contact.avatar" class="user-img rounded-circle" />
+									<span>{{contact.name}}</span>
 									<span class="position-absolute end-0 me-3">12:00</span>
 								</li>
 							</ul>
@@ -120,7 +78,7 @@
 							<div class="col-6 my-auto">
 								<img src="./img/avatar_6.png" class="user-img rounded-circle" />
 
-								<p class="d-inline-block pt-3">Fabio</p>
+								<p class="d-inline-block pt-3">Martina</p>
 							</div>
 
 							<div class="col-6 my-auto text-end">
