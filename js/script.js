@@ -166,8 +166,28 @@ createApp({
 					],
 				},
 			],
+			activeContact: null,
+			check: false,
+			myMessage: `my-message-box`,
+			myMessagePosition: `justify-content-end`,
+			userMessage: `user-message-box`,
 		};
 	},
-	methods: {},
-	mounted() {},
+	methods: {
+		messageList(contact) {
+			this.activeContact = contact;
+			this.check = true;
+		},
+		recivedSent(chat) {
+			return chat.status == `sent` ? this.myMessage : this.userMessage;
+		},
+		positionMessage(chat) {
+			if (chat.status == `sent`) {
+				return this.myMessagePosition;
+			}
+		},
+	},
+	mounted() {
+		console.log(this.contacts[2].messages[1]);
+	},
 }).mount("#app");

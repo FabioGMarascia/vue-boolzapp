@@ -52,6 +52,11 @@ ul {
 	height: calc(100vh - 19rem);
 }
 
+li:hover {
+	background-color: lightgray;
+	cursor: pointer;
+}
+
 .right-bottom-main {
 	background-color: #e5ddd5;
 	height: calc(100vh - 14rem);

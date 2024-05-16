@@ -64,7 +64,10 @@
 							</div>
 
 							<ul class="list-group overflow-auto rounded-0">
-								<li class="list-group-item py-3" v-for="contact in contacts">
+								<li
+									class="list-group-item py-3"
+									v-for="contact, i in contacts"
+									@click="messageList(i)">
 									<img :src="contact.avatar" class="user-img rounded-circle" />
 									<span>{{contact.name}}</span>
 									<span class="position-absolute end-0 me-3">12:00</span>
@@ -91,15 +94,21 @@
 						<div class="box-right-bottom">
 							<div class="right-bottom-main overflow-auto row mx-0 justify-content-center">
 								<div class="col-10 my-3">
-									<div class="row justify-content-end my-3">
-										<div class="col-5 my-message-box rounded p-3 position-relative">
-											Ciao
-											<span class="hours position-absolute bottom-0 end-0 pe-2"
-												>12:30</span
-											>
+									<div
+										v-if="check"
+										v-for="chat in contacts[activeContact].messages"
+										class="row my-3"
+										:class="positionMessage(chat)">
+										<div
+											class="col-5 rounded p-3 position-relative"
+											:class="recivedSent(chat)">
+											{{chat.message}}
+											<span class="hours position-absolute bottom-0 end-0 pe-2">
+												12:30
+											</span>
 										</div>
 									</div>
-
+									<!-- 
 									<div class="row justify-content-end my-3">
 										<div class="col-5 my-message-box rounded p-3 position-relative">
 											Come stai?
@@ -116,7 +125,7 @@
 												>12:31</span
 											>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 
