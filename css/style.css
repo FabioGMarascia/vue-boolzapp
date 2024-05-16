@@ -1,13 +1,14 @@
 /********************* COMMON **********************/
 body {
-	background-color: #222;
-	color: white;
 	font-family: sans-serif;
+	background-image: url("/img/background.png");
 }
 
 .deb {
 	border: 2px dashed blue;
 }
-/********************* HEADER **********************/
-/********************** MAIN ***********************/
-/********************* FOOTER **********************/
+
+.box {
+	height: calc(100vh - 2rem);
+	margin-top: 1rem;
+}
