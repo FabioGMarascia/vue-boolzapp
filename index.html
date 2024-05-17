@@ -85,12 +85,15 @@
 
 									<div class="col-10 my-auto">
 										{{contact.name}} <br />
-										<span class="little-text text-body-tertiary">
+										<span
+											class="little-text text-body-tertiary"
+											v-if="contact.messages.length > 0">
 											{{contact.messages[contact.messages.length - 1].message}}
 										</span>
 									</div>
 									<span
 										class="position-absolute end-0 me-3 little-hours text-body-tertiary"
+										v-if="contact.messages.length > 0"
 										>{{contact.messages[contact.messages.length - 1].date[1]}}</span
 									>
 								</li>
