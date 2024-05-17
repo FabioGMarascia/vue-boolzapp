@@ -60,13 +60,14 @@
 								<input
 									type="text"
 									class="form-control border-start-0"
-									placeholder="Search or start a chat" />
+									placeholder="Search or start a chat"
+									v-model="inputSearch" />
 							</div>
 
-							<ul class="list-group overflow-auto rounded-0">
+							<ul class="list-group rounded-0 overflow-auto">
 								<li
 									class="list-group-item py-3"
-									v-for="contact, i in contacts"
+									v-for="contact, i in filteredList(contact)"
 									@click="messageList(i)">
 									<img :src="contact.avatar" class="user-img rounded-circle" />
 									<span>{{contact.name}}</span>

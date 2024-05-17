@@ -50,6 +50,7 @@ body {
 
 ul {
 	height: calc(100vh - 19rem);
+	background-color: white;
 }
 
 li:hover {

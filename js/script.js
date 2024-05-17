@@ -172,6 +172,7 @@ createApp({
 			myMessagePosition: `justify-content-end`,
 			userMessage: `user-message-box`,
 			inputMessage: ``,
+			inputSearch: ``,
 		};
 	},
 	methods: {
@@ -197,13 +198,16 @@ createApp({
 			setTimeout(() => {
 				this.contacts[this.activeContact].messages.push({
 					date: ["10/01/2020", "20:51"],
-					message: `ok`,
+					message: `ok!`,
 					status: "recived",
 				});
 			}, 1000);
 		},
+		filteredList() {
+			return this.contacts.filter((contact) =>
+				contact.name.toLowerCase().includes(this.inputSearch.toLowerCase())
+			);
+		},
 	},
-	mounted() {
-		console.log(this.contacts[2].messages[1]);
-	},
+	mounted() {},
 }).mount("#app");
