@@ -177,6 +177,8 @@ createApp({
 			userMessage: `user-message-box`,
 			inputMessage: ``,
 			inputSearch: ``,
+			notification: `Turn on desktop notifications`,
+			notificationStatus: true,
 		};
 	},
 	methods: {
@@ -196,6 +198,7 @@ createApp({
 			}
 		},
 		addMessage() {
+			let messageBody = document.querySelector(".box-right-main");
 			if (this.activeContact != null) {
 				this.contacts[this.activeContact].messages.push({
 					date: ["10/01/2020", "20:51"],
@@ -209,9 +212,11 @@ createApp({
 						message: `ok!`,
 						status: "recived",
 					});
+					messageBody.scrollTop = messageBody.scrollHeight;
 				}, 1000);
 			}
 			this.inputMessage = ``;
+			messageBody.scrollTop = messageBody.scrollHeight;
 		},
 		filteredList() {
 			return this.contacts.filter((contact) =>
@@ -220,6 +225,15 @@ createApp({
 		},
 		deleteMessage(chat) {
 			this.contacts[this.activeContact].messages.splice(chat, 1);
+		},
+		changeNotification() {
+			if (this.notification == `Turn off desktop notifications`) {
+				this.notification = `Turn on desktop notifications`;
+				this.notificationStatus = true;
+			} else {
+				this.notification = `Turn off desktop notifications`;
+				this.notificationStatus = false;
+			}
 		},
 	},
 	mounted() {},

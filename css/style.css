@@ -47,7 +47,12 @@ body {
 	background-color: #8edafc;
 }
 
-.fa-bell-slash {
+.notification-box:hover {
+	cursor: pointer;
+}
+
+.fa-bell-slash,
+.fa-bell {
 	color: #8edafc;
 }
 

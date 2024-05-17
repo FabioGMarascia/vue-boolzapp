@@ -49,15 +49,19 @@
 							<div class="notification-box row mx-0 py-2">
 								<div class="col-2">
 									<div
-										class="bell-icon-container rounded-circle circled-box my-2 d-flex justify-content-center align-items-center">
-										<i class="fa-solid fa-bell-slash fs-3"></i>
+										class="bell-icon-container rounded-circle circled-box my-2 d-flex justify-content-center align-items-center"
+										@click="changeNotification()">
+										<i
+											class="fa-solid fa-bell-slash fs-3"
+											v-show="notificationStatus"></i>
+										<i class="fa-solid fa-bell fs-3" v-show="!notificationStatus"></i>
 									</div>
 								</div>
 
 								<div class="col-10 my-auto">
 									<span>
 										Get notifications from new messages <br />
-										<a href="#">Turn on desktop notifications</a>
+										<a href="#" @click="changeNotification()">{{notification}}</a>
 									</span>
 								</div>
 							</div>
@@ -120,8 +124,8 @@
 							</div>
 						</div>
 
-						<div class="box-right-main overflow-auto row mx-0 justify-content-center">
-							<div class="col-10 my-3">
+						<div class="box-right-main overflow-scroll row mx-0 justify-content-center pb-5">
+							<div class="col-10 my-3 boxed">
 								<div
 									v-if="check"
 									v-for="chat, i in contacts[activeContact].messages"
