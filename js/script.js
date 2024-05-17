@@ -167,6 +167,8 @@ createApp({
 				},
 			],
 			activeContact: null,
+			activeContactAvatar: null,
+			activeContactName: null,
 			check: false,
 			myMessage: `my-message-box`,
 			myMessagePosition: `justify-content-end`,
@@ -176,9 +178,11 @@ createApp({
 		};
 	},
 	methods: {
-		messageList(contact) {
-			this.activeContact = contact;
+		messageList(i) {
+			this.activeContact = i;
 			this.check = true;
+			this.activeContactAvatar = this.contacts[this.activeContact].avatar;
+			this.activeContactName = this.contacts[this.activeContact].name;
 		},
 		recivedSent(chat) {
 			return chat.status == `sent` ? this.myMessage : this.userMessage;
@@ -189,24 +193,30 @@ createApp({
 			}
 		},
 		addMessage() {
-			this.contacts[this.activeContact].messages.push({
-				date: ["10/01/2020", "20:51"],
-				message: this.inputMessage,
-				status: "sent",
-			});
-			this.inputMessage = ``;
-			setTimeout(() => {
+			if (this.activeContact != null) {
 				this.contacts[this.activeContact].messages.push({
 					date: ["10/01/2020", "20:51"],
-					message: `ok!`,
-					status: "recived",
+					message: this.inputMessage,
+					status: "sent",
 				});
-			}, 1000);
+
+				setTimeout(() => {
+					this.contacts[this.activeContact].messages.push({
+						date: ["10/01/2020", "20:51"],
+						message: `ok!`,
+						status: "recived",
+					});
+				}, 1000);
+			}
+			this.inputMessage = ``;
 		},
 		filteredList() {
 			return this.contacts.filter((contact) =>
 				contact.name.toLowerCase().includes(this.inputSearch.toLowerCase())
 			);
+		},
+		deleteMessage(chat) {
+			this.contacts[this.activeContact].messages.splice(chat, 1);
 		},
 	},
 	mounted() {},

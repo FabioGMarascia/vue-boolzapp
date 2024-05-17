@@ -48,7 +48,7 @@ body {
 	height: 4rem;
 }
 
-ul {
+.box-left-bottom ul {
 	height: calc(100vh - 19rem);
 	background-color: white;
 }
@@ -56,6 +56,10 @@ ul {
 li:hover {
 	background-color: lightgray;
 	cursor: pointer;
+}
+
+.activeClick {
+	background-color: rgb(165, 165, 165);
 }
 
 .right-bottom-main {
