@@ -172,13 +172,16 @@ createApp({
 			lastAccess: null,
 			lastMessage: null,
 			check: false,
+			showMessage: true,
 			myMessage: `my-message-box`,
 			myMessagePosition: `justify-content-end`,
 			userMessage: `user-message-box`,
 			inputMessage: ``,
-			inputSearch: ``,
+			searchContacts: ``,
+			searchMessages: ``,
 			notification: `Turn on desktop notifications`,
 			notificationStatus: true,
+			checkSearch: false,
 		};
 	},
 	methods: {
@@ -218,9 +221,14 @@ createApp({
 			this.inputMessage = ``;
 			messageBody.scrollTop = messageBody.scrollHeight;
 		},
-		filteredList() {
+		filteredContacts() {
 			return this.contacts.filter((contact) =>
-				contact.name.toLowerCase().includes(this.inputSearch.toLowerCase())
+				contact.name.toLowerCase().includes(this.searchContacts.toLowerCase())
+			);
+		},
+		filteredMessages() {
+			return this.contacts[this.activeContact].messages.filter((contact) =>
+				contact.message.toLowerCase().includes(this.searchMessages.toLowerCase())
 			);
 		},
 		deleteMessage(chat) {
@@ -234,6 +242,9 @@ createApp({
 				this.notification = `Turn off desktop notifications`;
 				this.notificationStatus = false;
 			}
+		},
+		chatShow() {
+			this.showMessage == true ? (this.showMessage = false) : (this.showMessage = true);
 		},
 	},
 	mounted() {},

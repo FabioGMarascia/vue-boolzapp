@@ -37,8 +37,12 @@ body {
 	font-size: 0.9rem;
 }
 
+i:hover {
+	cursor: pointer;
+}
+
 /********************* BOX LEFT *********************/
-.box-left-bottom ul {
+.contacts-box {
 	height: calc(100vh - 19rem);
 	background-color: white;
 }
@@ -84,4 +88,8 @@ li:hover {
 
 .my-message-box {
 	background-color: #d5f9ba;
+}
+
+.deb {
+	border: 2px dashed blue;
 }
