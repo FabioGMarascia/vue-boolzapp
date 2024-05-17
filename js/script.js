@@ -169,6 +169,8 @@ createApp({
 			activeContact: null,
 			activeContactAvatar: null,
 			activeContactName: null,
+			lastAccess: null,
+			lastMessage: null,
 			check: false,
 			myMessage: `my-message-box`,
 			myMessagePosition: `justify-content-end`,
@@ -183,6 +185,7 @@ createApp({
 			this.check = true;
 			this.activeContactAvatar = this.contacts[this.activeContact].avatar;
 			this.activeContactName = this.contacts[this.activeContact].name;
+			this.lastAccess = `Ultimo accesso oggi alle 12:00`;
 		},
 		recivedSent(chat) {
 			return chat.status == `sent` ? this.myMessage : this.userMessage;

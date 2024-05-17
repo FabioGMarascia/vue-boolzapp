@@ -35,7 +35,7 @@
 						<div class="box-left-top row mx-0">
 							<div class="col-6 my-auto">
 								<img src="./img/avatar_i.png" class="user-img rounded-circle" />
-								<span>Fabio</span>
+								<span class="ps-3">Fabio</span>
 							</div>
 
 							<div class="col-6 my-auto text-end">
@@ -56,8 +56,8 @@
 
 								<div class="col-10 my-auto">
 									<span>
-										Recive notifications
-										<a href="#">Active notifications from desktop</a>
+										Get notifications from new messages <br />
+										<a href="#">Turn on desktop notifications</a>
 									</span>
 								</div>
 							</div>
@@ -69,19 +69,30 @@
 								<input
 									type="text"
 									class="form-control border-start-0"
-									placeholder="Search or start a chat"
+									placeholder="Search or start a new chat"
 									v-model="inputSearch" />
 							</div>
 
 							<ul class="list-group rounded-0 overflow-auto">
 								<li
-									class="list-group-item py-3"
+									class="list-group-item py-3 d-flex"
 									v-for="contact, i in filteredList()"
 									@click="messageList(i)"
 									:class="activeContact === i ?  `activeClick` : ``">
-									<img :src="contact.avatar" class="user-img rounded-circle" />
-									<span>{{contact.name}}</span>
-									<span class="position-absolute end-0 me-3">12:00</span>
+									<div class="col-2">
+										<img :src="contact.avatar" class="user-img rounded-circle" />
+									</div>
+
+									<div class="col-10 my-auto">
+										{{contact.name}} <br />
+										<span class="little-text text-body-tertiary">
+											{{contact.messages[contact.messages.length - 1].message}}
+										</span>
+									</div>
+									<span
+										class="position-absolute end-0 me-3 little-hours text-body-tertiary"
+										>{{contact.messages[contact.messages.length - 1].date[1]}}</span
+									>
 								</li>
 							</ul>
 						</div>
@@ -89,10 +100,13 @@
 
 					<div class="box-right col-8 p-0">
 						<div class="box-right-top row mx-0 border-start">
-							<div class="col-6 my-auto">
+							<div class="col-1 my-auto">
 								<img :src="activeContactAvatar" class="user-img rounded-circle" />
-
-								<p class="d-inline-block pt-3">{{activeContactName}}</p>
+							</div>
+							<div class="col-5 my-auto px-0">
+								{{activeContactName}}
+								<br />
+								<span class="text-body-tertiary little-text">{{lastAccess}}</span>
 							</div>
 
 							<div class="col-6 my-auto text-end">
@@ -102,56 +116,56 @@
 								<i class="fa-solid fa-ellipsis-vertical fs-3 px-2"></i>
 							</div>
 						</div>
-						<div class="box-right-bottom">
-							<div class="right-bottom-main overflow-auto row mx-0 justify-content-center">
-								<div class="col-10 my-3">
-									<div
-										v-if="check"
-										v-for="chat, i in contacts[activeContact].messages"
-										class="row my-3"
-										:class="positionMessage(chat)">
-										<div
-											class="col-5 rounded p-3 position-relative"
-											:class="recivedSent(chat)">
-											{{chat.message}}
-											<button
-												class="btn dropdown position-absolute top-0 end-0 border-0"
-												type="button"
-												data-bs-toggle="dropdown"
-												aria-expanded="false">
-												<i class="fa-solid fa-angle-down"></i>
-											</button>
 
-											<ul class="dropdown-menu dropdown-menu-end">
-												<li class="mx-2 text-center rounded" @click="deleteMessage(i)">
-													Delete Message
-												</li>
-											</ul>
-											<span class="hours position-absolute bottom-0 end-0 pe-2">
-												{{chat.date[1]}}
-											</span>
-										</div>
+						<div class="box-right-main overflow-auto row mx-0 justify-content-center">
+							<div class="col-10 my-3">
+								<div
+									v-if="check"
+									v-for="chat, i in contacts[activeContact].messages"
+									class="row my-3"
+									:class="positionMessage(chat)">
+									<div
+										class="col-5 rounded p-3 position-relative"
+										:class="recivedSent(chat)">
+										{{chat.message}}
+										<button
+											class="btn dropdown position-absolute top-0 end-0 border-0"
+											type="button"
+											data-bs-toggle="dropdown"
+											aria-expanded="false">
+											<i class="fa-solid fa-angle-down"></i>
+										</button>
+
+										<ul class="dropdown-menu dropdown-menu-end">
+											<li class="mx-2 text-center rounded" @click="deleteMessage(i)">
+												Delete Message
+											</li>
+										</ul>
+										<span
+											class="little-hours position-absolute bottom-0 end-0 pe-2 text-body-tertiary">
+											{{chat.date[1]}}
+										</span>
 									</div>
 								</div>
 							</div>
+						</div>
 
-							<div class="right-bottom-footer row mx-0 text-center align-items-center">
-								<div class="col-1">
-									<i class="fa-regular fa-face-smile fs-3 px-2"></i>
-								</div>
+						<div class="box-right-footer row mx-0 text-center align-items-center">
+							<div class="col-1">
+								<i class="fa-regular fa-face-smile fs-3 px-2"></i>
+							</div>
 
-								<div class="col-10 h-100 py-2 px-0">
-									<input
-										type="text"
-										class="w-100 rounded h-100 px-2 input-group-text text-start"
-										placeholder="Write a message"
-										v-model="inputMessage"
-										@keyup.enter="addMessage()" />
-								</div>
+							<div class="col-10 h-100 py-2 px-0">
+								<input
+									type="text"
+									class="w-100 rounded h-100 px-2 input-group-text text-start"
+									placeholder="Write a message"
+									v-model="inputMessage"
+									@keyup.enter="addMessage()" />
+							</div>
 
-								<div class="col-1">
-									<i class="fa-solid fa-microphone fs-3 px-2"></i>
-								</div>
+							<div class="col-1">
+								<i class="fa-solid fa-microphone fs-3 px-2"></i>
 							</div>
 						</div>
 					</div>

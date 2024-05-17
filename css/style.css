@@ -4,16 +4,9 @@ body {
 	background-image: url("/img/background.png");
 }
 
-.deb {
-	border: 2px dashed blue;
-}
-
 .box {
 	height: calc(100vh - 4rem);
 	margin-top: 2rem;
-}
-.right-bottom-main {
-	background-image: url(/img/mine.jpg);
 }
 
 .box-left-top,
@@ -31,6 +24,25 @@ body {
 	width: 4rem;
 }
 
+.bell-icon-container,
+.user-message-box {
+	background-color: white;
+}
+
+.little-hours {
+	font-size: 0.7rem;
+}
+
+.little-text {
+	font-size: 0.9rem;
+}
+
+/********************* BOX LEFT *********************/
+.box-left-bottom ul {
+	height: calc(100vh - 19rem);
+	background-color: white;
+}
+
 .notification-box {
 	background-color: #8edafc;
 }
@@ -39,18 +51,9 @@ body {
 	color: #8edafc;
 }
 
-.bell-icon-container {
-	background-color: white;
-}
-
 .search-box {
 	background-color: white;
 	height: 4rem;
-}
-
-.box-left-bottom ul {
-	height: calc(100vh - 19rem);
-	background-color: white;
 }
 
 li:hover {
@@ -59,26 +62,21 @@ li:hover {
 }
 
 .activeClick {
-	background-color: rgb(165, 165, 165);
+	background-color: lightgray;
 }
 
-.right-bottom-main {
+/********************* BOX RIGHT *********************/
+.box-right-main {
+	background-image: url(/img/mine.jpg);
 	background-color: #e5ddd5;
 	height: calc(100vh - 14rem);
 }
 
-.right-bottom-footer {
+.box-right-footer {
 	background-color: #f3eeea;
 	height: 5rem;
 }
 
 .my-message-box {
 	background-color: #d5f9ba;
-}
-.user-message-box {
-	background-color: white;
-}
-
-.hours {
-	font-size: 0.8rem;
 }
