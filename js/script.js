@@ -206,7 +206,7 @@ createApp({
 		},
 		addMessage() {
 			let messageBody = document.querySelector(".box-right-main");
-			if (this.activeContact != null) {
+			if (this.activeContact != null && this.inputMessage != ``) {
 				this.contacts[this.activeContact].messages.push({
 					date: ["10/01/2020", "20:51"],
 					message: this.inputMessage,
