@@ -111,7 +111,7 @@ createApp({
 					messages: [
 						{
 							date: ["10/01/2020", "15:30"],
-							message: "Ciao Claudia, hai novità?",
+							message: "Ciao Martina, hai novità?",
 							status: "sent",
 						},
 						{

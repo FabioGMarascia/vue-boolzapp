@@ -121,7 +121,7 @@
 
 							<div class="col-6 my-auto">
 								<div
-									class="search-box input-group rounded border border-1"
+									class="search-box input-group rounded border border-1 h-50"
 									v-show="checkSearch">
 									<input
 										type="text"
@@ -134,7 +134,7 @@
 							<div class="col-2 my-auto text-end">
 								<i
 									class="fa-solid fa-magnifying-glass fs-3 px-2"
-									@click="checkSearch = !checkSearch"></i>
+									@click="checkSearch = !checkSearch, searchMessages = ``"></i>
 								<i class="fa-solid fa-paperclip fs-3 px-2"></i>
 								<i class="fa-solid fa-ellipsis-vertical fs-3 px-2"></i>
 							</div>
