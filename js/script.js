@@ -186,11 +186,15 @@ createApp({
 	},
 	methods: {
 		messageList(i) {
-			this.activeContact = i;
-			this.check = true;
-			this.activeContactAvatar = this.contacts[this.activeContact].avatar;
-			this.activeContactName = this.contacts[this.activeContact].name;
-			this.lastAccess = `Ultimo accesso oggi alle 12:00`;
+			if (this.activeContact == i) {
+				this.resetContact();
+			} else {
+				this.activeContact = i;
+				this.check = true;
+				this.activeContactAvatar = this.filteredContacts()[this.activeContact].avatar;
+				this.activeContactName = this.filteredContacts()[this.activeContact].name;
+				this.lastAccess = `Ultimo accesso oggi alle 12:00`;
+			}
 		},
 		recivedSent(chat) {
 			return chat.status == `sent` ? this.myMessage : this.userMessage;
@@ -227,8 +231,8 @@ createApp({
 			);
 		},
 		filteredMessages() {
-			return this.contacts[this.activeContact].messages.filter((contact) =>
-				contact.message.toLowerCase().includes(this.searchMessages.toLowerCase())
+			return this.filteredContacts()[this.activeContact].messages.filter((chat) =>
+				chat.message.toLowerCase().includes(this.searchMessages.toLowerCase())
 			);
 		},
 		deleteMessage(chat) {
@@ -243,8 +247,12 @@ createApp({
 				this.notificationStatus = false;
 			}
 		},
-		chatShow() {
-			this.showMessage == true ? (this.showMessage = false) : (this.showMessage = true);
+		resetContact() {
+			this.activeContact = null;
+			this.check = false;
+			this.activeContactAvatar = null;
+			this.activeContactName = null;
+			this.lastAccess = null;
 		},
 	},
 	mounted() {},
