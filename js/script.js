@@ -255,5 +255,9 @@ createApp({
 			this.lastAccess = null;
 		},
 	},
-	mounted() {},
+	mounted() {
+		let contactsBody = document.querySelector(".contacts-box");
+		contactsBody.scrollTop = 0;
+	},
 }).mount("#app");
+0;
