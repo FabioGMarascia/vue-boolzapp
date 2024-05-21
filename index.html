@@ -61,7 +61,10 @@
 
 								<div class="col-10 my-auto">
 									<span>
-										Get notifications from new messages <br />
+										Get notifications from new messages
+
+										<br />
+
 										<a href="#" @click="changeNotification()">{{notification}}</a>
 									</span>
 								</div>
@@ -71,6 +74,7 @@
 								<span class="input-group-text">
 									<i class="fa-solid fa-magnifying-glass"></i>
 								</span>
+
 								<input
 									type="text"
 									class="form-control border-start-0"
@@ -91,13 +95,17 @@
 										</div>
 
 										<div class="col-10 my-auto">
-											{{contact.name}} <br />
+											{{contact.name}}
+
+											<br />
+
 											<span
 												class="little-text text-body-tertiary"
 												v-if="contact.messages.length > 0">
 												{{contact.messages[contact.messages.length - 1].message}}
 											</span>
 										</div>
+
 										<span
 											class="position-absolute end-0 me-3 little-hours text-body-tertiary"
 											v-if="contact.messages.length > 0"
@@ -117,7 +125,9 @@
 
 							<div class="col-3 my-auto px-0" v-show="showMessage">
 								{{activeContactName}}
+
 								<br />
+
 								<span class="text-body-tertiary little-text">{{lastAccess}}</span>
 							</div>
 
@@ -169,6 +179,7 @@
 												{{checkDropdown(chat)}}
 											</li>
 										</ul>
+
 										<span
 											class="little-hours position-absolute bottom-0 end-0 pe-2 text-body-tertiary">
 											{{chat.date[1]}}
