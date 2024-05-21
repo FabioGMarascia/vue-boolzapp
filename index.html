@@ -84,7 +84,7 @@
 									<li
 										class="list-group-item py-3 d-flex"
 										v-for="contact, i in filteredContacts()"
-										@click="messageList(i)"
+										@click="activeUser(i)"
 										:class="activeContact === i ?  `activeClick` : ``">
 										<div class="col-2">
 											<img :src="contact.avatar" class="user-img rounded-circle" />
@@ -142,17 +142,18 @@
 							</div>
 						</div>
 
-						<div class="box-right-main overflow-scroll row mx-0 justify-content-center pb-5">
+						<div class="box-right-main overflow-auto row mx-0 justify-content-center pb-5">
 							<div class="col-10 my-3 boxed" v-show="showMessage">
 								<div
 									v-if="check"
 									v-for="chat, i in filteredMessages()"
-									class="row my-3"
+									class="row my-3 mx-0"
 									:class="positionMessage(chat)">
 									<div
 										class="col-5 rounded p-3 position-relative"
 										:class="recivedSent(chat)">
 										{{chat.message}}
+
 										<button
 											class="btn dropdown position-absolute top-0 end-0 border-0"
 											type="button"
@@ -161,9 +162,11 @@
 											<i class="fa-solid fa-angle-down"></i>
 										</button>
 
-										<ul class="dropdown-menu dropdown-menu-end">
-											<li class="mx-2 text-center rounded" @click="deleteMessage(i)">
-												Delete Message
+										<ul class="dropdown-menu dropdown-menu-end py-0">
+											<li
+												class="py-1 px-2 border border-1 border-black text-center rounded"
+												@click="deleteMessage(i)">
+												{{checkDropdown(chat)}}
 											</li>
 										</ul>
 										<span

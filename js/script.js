@@ -185,7 +185,7 @@ createApp({
 		};
 	},
 	methods: {
-		messageList(i) {
+		activeUser(i) {
 			if (this.activeContact == i) {
 				this.resetContact();
 			} else {
@@ -203,6 +203,9 @@ createApp({
 			if (chat.status == `sent`) {
 				return this.myMessagePosition;
 			}
+		},
+		checkDropdown(chat) {
+			return chat.status == `sent` ? `Delete message` : `Delete message for me`;
 		},
 		addMessage() {
 			let messageBody = document.querySelector(".box-right-main");
