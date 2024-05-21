@@ -263,4 +263,3 @@ createApp({
 		contactsBody.scrollTop = 0;
 	},
 }).mount("#app");
-0;
