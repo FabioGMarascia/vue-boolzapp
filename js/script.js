@@ -258,7 +258,7 @@ createApp({
 	computed: {
 		filteredContacts() {
 			return this.contacts.filter((contact) =>
-				contact.name.toLowerCase().includes(this.searchContacts.toLowerCase())
+				contact.name.toLowerCase().startsWith(this.searchContacts.toLowerCase())
 			);
 		},
 		filteredMessages() {
