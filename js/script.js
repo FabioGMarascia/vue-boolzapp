@@ -167,6 +167,7 @@ createApp({
 				},
 			],
 			activeContact: null,
+			prevActiveContact: null,
 			activeContactAvatar: null,
 			activeContactName: null,
 			lastAccess: null,
@@ -216,8 +217,10 @@ createApp({
 					status: "sent",
 				});
 
+				this.prevActiveContact = this.activeContact;
+
 				setTimeout(() => {
-					this.filteredContacts[this.activeContact].messages.push({
+					this.filteredContacts[this.prevActiveContact].messages.push({
 						date: ["10/01/2020", "20:51"],
 						message: `ok!`,
 						status: "recived",
