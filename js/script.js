@@ -191,8 +191,8 @@ createApp({
 			} else {
 				this.activeContact = i;
 				this.check = true;
-				this.activeContactAvatar = this.filteredContacts()[this.activeContact].avatar;
-				this.activeContactName = this.filteredContacts()[this.activeContact].name;
+				this.activeContactAvatar = this.filteredContacts[this.activeContact].avatar;
+				this.activeContactName = this.filteredContacts[this.activeContact].name;
 				this.lastAccess = `Ultimo accesso oggi alle 12:00`;
 			}
 		},
@@ -210,14 +210,14 @@ createApp({
 		addMessage() {
 			let messageBody = document.querySelector(".box-right-main");
 			if (this.activeContact != null && this.inputMessage != ``) {
-				this.filteredContacts()[this.activeContact].messages.push({
+				this.filteredContacts[this.activeContact].messages.push({
 					date: ["10/01/2020", "20:51"],
 					message: this.inputMessage,
 					status: "sent",
 				});
 
 				setTimeout(() => {
-					this.filteredContacts()[this.activeContact].messages.push({
+					this.filteredContacts[this.activeContact].messages.push({
 						date: ["10/01/2020", "20:51"],
 						message: `ok!`,
 						status: "recived",
@@ -228,16 +228,7 @@ createApp({
 			this.inputMessage = ``;
 			messageBody.scrollTop = messageBody.scrollHeight;
 		},
-		filteredContacts() {
-			return this.contacts.filter((contact) =>
-				contact.name.toLowerCase().includes(this.searchContacts.toLowerCase())
-			);
-		},
-		filteredMessages() {
-			return this.filteredContacts()[this.activeContact].messages.filter((chat) =>
-				chat.message.toLowerCase().includes(this.searchMessages.toLowerCase())
-			);
-		},
+
 		deleteMessage(chat) {
 			this.contacts[this.activeContact].messages.splice(chat, 1);
 		},
@@ -256,6 +247,21 @@ createApp({
 			this.activeContactAvatar = null;
 			this.activeContactName = null;
 			this.lastAccess = null;
+		},
+		moveTo(arr, indexMove) {
+			arr.splice(0, 0, arr.splice(indexMove, 1));
+		},
+	},
+	computed: {
+		filteredContacts() {
+			return this.contacts.filter((contact) =>
+				contact.name.toLowerCase().includes(this.searchContacts.toLowerCase())
+			);
+		},
+		filteredMessages() {
+			return this.filteredContacts[this.activeContact].messages.filter((chat) =>
+				chat.message.toLowerCase().includes(this.searchMessages.toLowerCase())
+			);
 		},
 	},
 	mounted() {
